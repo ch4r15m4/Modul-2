@@ -9,6 +9,8 @@ oleh : Axel Gavan & Charisma Ilham Saputra
 ```
  lxc-ls -f
 ```
+![Picture1](https://user-images.githubusercontent.com/93067446/144472039-3493e071-54d2-4cb4-ab36-ded4d039d278.png)
+
 
 -  lalu kita hapus ubuntu landing menggunakan command dibawah, dan buat ubuntu focal dengan lxc-create
 
@@ -18,7 +20,8 @@ oleh : Axel Gavan & Charisma Ilham Saputra
  sudo lxc-create -n ubuntu_landing -t download -- --dist ubuntu --release focal --arch amd64 --force-cache --no-validate --server images.linuxcontainers.org
 ```
 
-gambar
+![Picture2](https://user-images.githubusercontent.com/93067446/144471909-2df68395-a757-4739-b668-a40e368d5558.png)
+
 
 - Setelah membuat ubuntu focal, gunakan command dibawah (lxc-start untuk memulai ubuntu_landing, lxc-attach untuk membuka ubuntu_landing, dan apt install nano untuk menginstall nano yang digunakan untuk mengedit config ).
 
@@ -28,19 +31,16 @@ gambar
  apt install nano net-tools curl
 ```
 
- gambar
-
-
-
 - Masuk ke nano lalu atur IP ubuntu_landing menjadi 10.0.3.103
 
 ```
 nano /etc/netplan/10-lxc.yaml
 netplan apply
 ```
+![Picture3](https://user-images.githubusercontent.com/93067446/144472323-7f2b3ba8-5b41-4c5b-8f5f-465c6df6e372.png)
 
-gambar
 
+![Picture4](https://user-images.githubusercontent.com/93067446/144472188-3dea5b9e-a019-4b01-be26-eae96187bc90.png)
 
 
 - Atur autostart lxc, menggunakan command echo
@@ -49,16 +49,13 @@ gambar
 echo "lxc.start.auto = 1" >> /var/lib/lxc/ubuntu_landing/config
 lxc-ls -f
 ```
-
-gambar
-
 - install ssh
 
 ```
 apt-get install openssh-server -y
 ```
 
-gambar
+![Picture5](https://user-images.githubusercontent.com/93067446/144472404-f4044f58-18c6-47fa-9b7e-d56302eab30b.png)
 
 - konfigurasi ssh
 
@@ -66,7 +63,8 @@ gambar
 nano /etc/ssh/sshd_config
 ```
 
-gambar
+![Picture6](https://user-images.githubusercontent.com/93067446/144472454-92f4d5bc-7f17-4443-be82-3ab6735b1598.png)
+
 
 - buat password baru
 
@@ -75,7 +73,8 @@ service sshd restart
 passwd
 ```
 
-gambar
+![Picture7](https://user-images.githubusercontent.com/93067446/144472517-8dd93610-88db-4e20-823b-47839a938437.png)
+
 
 - cek ssh
 
@@ -83,7 +82,8 @@ gambar
 ssh root@10.0.3.103
 ```
 
-gambar
+![Picture8](https://user-images.githubusercontent.com/93067446/144472562-04467811-d490-49d6-8cb7-95494da0a770.png)
+
 
 2. **Rubah LXC php7 dengan ubuntu focal (destroy n create, same ip, same name)**
 
@@ -93,15 +93,17 @@ gambar
 lxc-destroy ubuntu_php7.4 -f
 ```
 
-gambar
+![Picture9](https://user-images.githubusercontent.com/93067446/144472625-757a36a8-adf3-4392-b3be-16e03e5ff1fe.png)
+
 
 - buat container lxc ubuntu versi focal
 
 ```
-lxc-create -n ubuntu_php7.4 -t download -- --dist ubuntu --release focal --arch amd64 --force-cache --no-validate --server images.linuxcontainers.org
+sudo lxc-create -n ubuntu_php7.4 -t download -- --dist ubuntu --release focal --arch amd64 --force-cache --no-validate --server images.linuxcontainers.org
 ```
 
-gambar
+![Picture10](https://user-images.githubusercontent.com/93067446/144472749-9a5fa4b1-f918-4f5d-9d1d-89521b5b1042.png)
+
 
 - Setelah membuat ubuntu focal, gunakan command dibawah (lxc-start untuk memulai ubuntu_landing, lxc-attach untuk membuka ubuntu_landing, dan apt install nano untuk menginstall nano yang digunakan untuk mengedit config ).
 
@@ -111,7 +113,8 @@ gambar
  apt install nano net-tools curl
 ```
 
-gambar
+![Picture11](https://user-images.githubusercontent.com/93067446/144472804-669e5ecb-dab8-40ae-9ee2-064f65f0d8f9.png)
+
 
 - konfigurasi menjadi IP statik
 
@@ -119,13 +122,15 @@ gambar
 nano /etc/netplan/10-lxc.yaml
 ```
 
-gambar
+![Picture12](https://user-images.githubusercontent.com/93067446/144472862-cb3e7403-52e1-4fb1-8db9-f31c6947ec17.png)
+
 
 ```
 netplan apply
 ```
 
-gambar
+![Picture13](https://user-images.githubusercontent.com/93067446/144472903-a6b0d522-5f20-434d-9c4e-3519b050c6f4.png)
+
 
 - install ssh
 
@@ -135,7 +140,8 @@ lxc-attach ubuntu_php7.4
 apt-get install openssh-server -y
 ```
 
-gambar
+![Picture14](https://user-images.githubusercontent.com/93067446/144472945-bafcd4c3-c674-4779-81e0-bd0427773e2c.png)
+
 
 - konfigurasi ssh
 
@@ -143,7 +149,8 @@ gambar
 nano /etc/ssh/sshd_config
 ```
 
-gambar
+![Picture15](https://user-images.githubusercontent.com/93067446/144472972-194554c5-f1da-498f-9206-536610bd501a.png)
+
 
 - buat password baru
 
@@ -152,7 +159,8 @@ service sshd restart
 passwd
 ```
 
-gambar
+![Picture16](https://user-images.githubusercontent.com/93067446/144473005-61334f06-a97e-4a71-bba1-00470cab0723.png)
+
 
 - cek ssh
 
@@ -160,7 +168,8 @@ gambar
 ssh root@10.0.3.103
 ```
 
-gambar
+![Picture17](https://user-images.githubusercontent.com/93067446/144473028-8807c2fc-d569-4d7e-85c0-aa2519fc6aab.png)
+
 
 3. **vm.local/**
 
@@ -181,7 +190,9 @@ nano hosts
 ubuntu_landing ansible_host=lxc_landing.dev ansible_ssh_user=root ansible_become_pass=1234
 ```
 
-gambar
+![Uploading Picture18.png…]()
+
+![Picture19](https://user-images.githubusercontent.com/93067446/144473212-56f4f7ae-1bd7-4ce8-afac-f27c93dad3fb.png)
 
 - buat direktori yang akan dijalankan pada folder php dam install di nginxphp.yml
 
@@ -228,7 +239,8 @@ gambar
                    state: present
 ```
 
-gambar
+![Uploading Picture20.png…]()
+
 
 - instalasi
 
@@ -236,7 +248,8 @@ gambar
 ansible-playbook -y hosts nginxphp.yml -k
 ```
 
-gambar
+![Picture21](https://user-images.githubusercontent.com/93067446/144473305-87f01120-8d74-4ffc-8ce2-2b2ad70cb59a.png)
+
 
 - buat folder installcomposer.yml
 
@@ -303,7 +316,8 @@ gambar
       recurse: yes
 ```
 
-gambar
+![Uploading Picture22.png…]()
+
 
 - instalasi
 
@@ -311,7 +325,8 @@ gambar
 ansible-playbook -y hosts installcomposer.yml -k
 ```
 
-gambar
+![Picture23](https://user-images.githubusercontent.com/93067446/144473377-91141ff7-3c8f-4c2d-b9f1-829d37c86b10.png)
+
 
 - mengatur lxc_landing.dev
 
@@ -338,7 +353,8 @@ server {
 }
 ```
 
-gambar
+![Picture24](https://user-images.githubusercontent.com/93067446/144473428-2b27dae6-84dc-4a86-8fed-fb2c0fe94c3a.png)
+
 
 - buat folder config.yml
 
@@ -388,7 +404,8 @@ gambar
       warn: false
 ```
 
-gambar
+![Picture25](https://user-images.githubusercontent.com/93067446/144473474-29667818-97c1-4eee-b28c-3959ca565a8c.png)
+
 
 - instalasi
 
@@ -396,11 +413,13 @@ gambar
 ansible-playbook -y hosts config.yml -k
 ```
 
-gambar
+![Picture26](https://user-images.githubusercontent.com/93067446/144473494-6f2ec918-6e70-408a-b976-179244da846c.png)
+
 
 - buka vm.local untuk mengecek keberhasilan
 
-gambar
+![Picture27](https://user-images.githubusercontent.com/93067446/144473521-57679036-df6c-44e6-b278-92d003be8ef8.png)
+
 
 4. **vm.local/blog**
 
@@ -412,7 +431,8 @@ mkdir wordoress/
 cd wordpress/
 ```
 
-gambar
+![Uploading 1.png…]()
+
 
 - membuat hosts untuk lxc
 
@@ -421,7 +441,8 @@ nano hosts
 ubuntu_php7.4 ansible_host=lxc_php7.dev ansible_ssh_user=root ansible_become_pass=1234
 ```
 
-gambar
+![Picture28](https://user-images.githubusercontent.com/93067446/144473587-c52d2678-5bf8-481f-b6c8-51d11013b377.png)
+
 
 - buat direktori untuk tasks
 
@@ -520,7 +541,8 @@ gambar
      action: service name=nginx state=restarted
 ```
 
-gambar
+![Picture29](https://user-images.githubusercontent.com/93067446/144473636-85cc96e8-ad7d-44b1-adc4-2aa828bc94f7.png)
+
 
 - masuk pada template wp.conf
 
@@ -626,7 +648,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once ABSPATH . 'wp-settings.php';
 ```
 
-gambar
+![Picture30](https://user-images.githubusercontent.com/93067446/144473739-337522ae-9054-4789-971e-85086555c4f5.png)
+
 
 - masuk template wordpress.conf
 
@@ -662,7 +685,8 @@ server {
 }
 ```
 
-gambar
+![Picture31](https://user-images.githubusercontent.com/93067446/144473769-c346e0de-a46c-4d8e-8ae7-656f3f9a1920.png)
+
 
 - jalankan ansible untuk menginstall
 
@@ -670,11 +694,13 @@ gambar
 ansible-playbook -i hosts installwordpress.yml -k
 ```
 
-gambar
+![Picture32](https://user-images.githubusercontent.com/93067446/144473800-1431320c-61d9-4baf-aad8-e27333b297e3.png)
+
 
 - buka vm.local/blog/ untuk mengecek
 
-gambar
+![Picture33](https://user-images.githubusercontent.com/93067446/144473818-dd473add-c118-40c4-9c7b-e862c3f3ba36.png)
+
 
 ##### Soal tambahan
 
@@ -687,11 +713,14 @@ cd ~/ansible/laravel/
 nano lxc_landing.dev
 ```
 
-gambar
+![Picture34](https://user-images.githubusercontent.com/93067446/144473852-eff50f9a-86dc-4a1c-bf8e-52d1db91cf90.png)
+
 
 - ubah menjadi seperti gambar dibawah
 
-gambar
+
+![Picture35](https://user-images.githubusercontent.com/93067446/144473870-e960278f-12e9-4de9-8d94-8344889b3a41.png)
+
 
 - buat ansible dengan nama "soal2.yml"
 
@@ -699,7 +728,8 @@ gambar
 nano soal2.yml
 ```
 
-gambar
+![Picture36](https://user-images.githubusercontent.com/93067446/144473944-9e0dfef6-6c03-4e29-a685-8b01251a4b8c.png)
+
 
 - jalankan ansible "tambahan.yml"
 
@@ -736,5 +766,7 @@ gambar
       warn: false
 ```
 
-gambar
+![Picture37](https://user-images.githubusercontent.com/93067446/144473987-753abcba-15e7-4f1e-a552-d23911e96b76.png)
+
+![Picture38](https://user-images.githubusercontent.com/93067446/144474016-1dd1ab13-3e0e-4f92-96db-6812f9fd0f26.png)
 
