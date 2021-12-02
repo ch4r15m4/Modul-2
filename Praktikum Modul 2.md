@@ -181,7 +181,8 @@ mkdir laravel/
 cd laravel/
 ```
 
-gambar
+![Picture18](https://user-images.githubusercontent.com/93067446/144474272-83eca012-81ef-4e44-8bca-999c75967ffb.png)
+
 
 - membuat hosts untuk lxc
 
@@ -190,9 +191,8 @@ nano hosts
 ubuntu_landing ansible_host=lxc_landing.dev ansible_ssh_user=root ansible_become_pass=1234
 ```
 
-![Uploading Picture18.png…]()
-
 ![Picture19](https://user-images.githubusercontent.com/93067446/144473212-56f4f7ae-1bd7-4ce8-afac-f27c93dad3fb.png)
+
 
 - buat direktori yang akan dijalankan pada folder php dam install di nginxphp.yml
 
@@ -239,7 +239,7 @@ ubuntu_landing ansible_host=lxc_landing.dev ansible_ssh_user=root ansible_become
                    state: present
 ```
 
-![Uploading Picture20.png…]()
+![Picture20](https://user-images.githubusercontent.com/93067446/144474351-7ad43adf-30ef-40a9-9ade-b8461b1e1ac8.png)
 
 
 - instalasi
@@ -316,7 +316,7 @@ ansible-playbook -y hosts nginxphp.yml -k
       recurse: yes
 ```
 
-![Uploading Picture22.png…]()
+![Picture22](https://user-images.githubusercontent.com/93067446/144474401-463dff3c-cdb2-4bdc-9458-a6ebeae1ef41.png)
 
 
 - instalasi
@@ -431,7 +431,7 @@ mkdir wordoress/
 cd wordpress/
 ```
 
-![Uploading 1.png…]()
+![1](https://user-images.githubusercontent.com/93067446/144474487-0ad2f01d-d982-485e-802d-8b7e5b371f28.png)
 
 
 - membuat hosts untuk lxc
